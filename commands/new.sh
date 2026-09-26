@@ -21,10 +21,10 @@ case "$project_name" in
 esac
 
 case "$project_type" in
-  ts|py)
+  ts|py|astro)
     ;;
   *)
-    printf 'Unknown stack: %s (expected ts or py)\n' "$project_type" >&2
+    printf 'Unknown stack: %s (expected ts, py, or astro)\n' "$project_type" >&2
     exit 2
     ;;
 esac

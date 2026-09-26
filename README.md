@@ -4,7 +4,7 @@
 
 This folder contains the `nova` commands. It has not been installed into your command path.
 
-Running `nova init`, `nova init ts`, or `nova init py` inside a directory creates:
+Running `nova init`, `nova init ts`, `nova init py`, or `nova init astro` inside a directory creates:
 
 ```text
 .gitignore
@@ -13,7 +13,7 @@ Running `nova init`, `nova init ts`, or `nova init py` inside a directory create
 .sandbox/
 ```
 
-- TypeScript gets a minimal `package.json`; Python gets a minimal `pyproject.toml`. The normalized folder name becomes the package name.
+- minimal dependencies file.
 
 ## Commands
 
@@ -21,8 +21,10 @@ Running `nova init`, `nova init ts`, or `nova init py` inside a directory create
 nova init          # shared project files
 nova init ts       # TypeScript project ignores
 nova init py       # Python project ignores
+nova init astro    # Astro starter project
 nova new web-app ts
 nova new data-tool py
+nova new my-site astro
 nova doctor
 nova --help
 ```

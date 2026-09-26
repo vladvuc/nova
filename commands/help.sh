@@ -3,8 +3,8 @@
 set -euo pipefail
 
 cat <<'EOF'
-Usage: nova init [ts|py]
-       nova new <name> <ts|py>
+Usage: nova init [ts|py|astro]
+       nova new <name> <ts|py|astro>
        nova doctor
        nova --help
 

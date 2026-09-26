@@ -5,6 +5,8 @@ set -euo pipefail
 readonly COMMANDS_DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 readonly NOVA_ROOT="$(cd -P "$COMMANDS_DIR/.." && pwd)"
 
+source "$NOVA_ROOT/lib/astro.sh"
+
 if (( $# != 0 )); then
   "$NOVA_ROOT/commands/help.sh" >&2
   exit 2
@@ -40,7 +42,20 @@ check_path .plans/PROGRESS.md
 check_path .sandbox
 check_path .gitignore
 
-if [[ -f .gitignore ]] && grep -Fqx 'node_modules/' .gitignore; then
+if is_astro_project; then
+  printf '[ok] Astro stack detected\n'
+  check_path package.json
+  check_path tsconfig.json
+  check_path src/pages
+  check_command node
+  check_command pnpm
+  if command -v node >/dev/null 2>&1; then
+    if ! node -e 'const [major, minor] = process.versions.node.split(".").map(Number); process.exit(major > 22 || (major === 22 && minor >= 12) ? 0 : 1)'; then
+      printf '[missing] Astro requires Node.js >=22.12.0\n'
+      problems=$((problems + 1))
+    fi
+  fi
+elif [[ -f .gitignore ]] && grep -Fqx 'node_modules/' .gitignore; then
   printf '[ok] TypeScript stack detected\n'
   check_path package.json
   check_command node

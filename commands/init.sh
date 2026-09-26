@@ -18,7 +18,7 @@ if (( $# > 1 )); then
 fi
 
 case "$project_type" in
-  base|ts|py)
+  base|ts|py|astro)
     ;;
   *)
     "$NOVA_ROOT/commands/help.sh" >&2
@@ -39,6 +39,10 @@ case "$project_type" in
   py)
     add_gitignore_template "$NOVA_ROOT/templates/python/gitignore"
     create_manifest "$NOVA_ROOT/templates/python/pyproject.toml" pyproject.toml
+    ;;
+  astro)
+    source "$NOVA_ROOT/lib/astro.sh"
+    init_astro_project
     ;;
 esac
 
