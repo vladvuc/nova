@@ -1,7 +1,8 @@
 # `nova`
 
-This folder contains the `nova` commands. It has not been installed into
-your command path.
+![Nova — a central node surrounded by branching nodes in Catppuccin pastel colors](assets/nova-banner.svg)
+
+This folder contains the `nova` commands. It has not been installed into your command path.
 
 Running `nova init`, `nova init ts`, or `nova init py` inside a directory creates:
 
