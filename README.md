@@ -53,9 +53,6 @@ If `~/.local/bin` is not on your PATH. For the default installation, add this to
 export PATH="$HOME/.local/bin:$PATH"
 ```
 
-Run `nova --help` to check the installation. You can also install directly from
-this repository with `bash install.sh`.
-
 ## Update
 
 ```sh
