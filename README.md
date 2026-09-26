@@ -1,6 +1,6 @@
 # `nova`
 
-![Nova — a central node surrounded by branching nodes in Catppuccin pastel colors](assets/nova-banner.svg)
+![Nova — a central node. Nova avantura](assets/nova-banner.svg)
 
 Nova provides small commands for starting projects.
 
@@ -56,16 +56,10 @@ export PATH="$HOME/.local/bin:$PATH"
 Run `nova --help` to check the installation. You can also install directly from
 this repository with `bash install.sh`.
 
-Rerunning the installer preserves an existing Nova checkout and repairs a
-missing command link. It refuses to replace unrelated files or directories.
-Use `nova update` to update an existing installation.
-
 ## Update
 
 ```sh
 nova update
 ```
 
-Updates require a clean Git checkout on `main`. Local changes, untracked files,
-and diverging commits stop the update. Nothing is automatically stashed or
-reset. The command needs Git and internet access, with no GitHub token required.
+Updates require a clean Git checkout on `main`.

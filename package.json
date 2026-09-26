@@ -3,7 +3,7 @@
   "private": true,
   "description": "Development and release tooling for Nova",
   "scripts": {
-    "test": "bash -n bin/nova commands/*.sh lib/*.sh",
+    "hooks:install": "bash scripts/setup-hooks.sh",
     "release": "semantic-release",
     "release:dry": "semantic-release --dry-run"
   },

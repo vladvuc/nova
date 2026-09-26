@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if (( $# != 1 )) || [[ ! -f "$1" ]]; then
+  printf 'Usage: commit-msg <message-file>\n' >&2
+  exit 2
+fi
+
+# Inspect the message as Git will store it, without modifying the user's file.
+message="$(git stripspace --strip-comments < "$1")"
+header="${message%%$'\n'*}"
+pattern='^(feat|fix|perf|docs|style|refactor|test|build|ci|chore|revert)(\([^()[:space:]]+\))?!?: [^[:space:]].*$'
+
+if [[ "$header" =~ $pattern ]]; then
+  exit 0
+fi
+
+printf '%s\n' \
+  'Commit rejected: use a Conventional Commit message.' \
+  'Format: type(scope): description  (scope is optional; ! marks a breaking change)' \
+  'Types: feat, fix, perf, docs, style, refactor, test, build, ci, chore, revert' \
+  '' \
+  'Examples:' \
+  '  fix(mobile): correct navigation layout' \
+  '  feat(astro): add template support' \
+  '  feat(cli)!: change init arguments' \
+  '  docs: update installation instructions' >&2
+exit 1
