@@ -15,13 +15,17 @@ Running `nova init`, `nova init ts`, `nova init py`, or `nova init astro` inside
 
 - minimal dependencies file.
 
+Astro also creates an empty `.astro/` directory. It adds no source folders,
+pages, or configuration files; you choose your own project structure. Existing
+files are preserved, and `package.json` is created only when missing.
+
 ## Commands
 
 ```sh
 nova init          # shared project files
 nova init ts       # TypeScript project ignores
 nova init py       # Python project ignores
-nova init astro    # Astro starter project
+nova init astro    # Astro ignores, manifest, and .astro/
 nova new web-app ts
 nova new data-tool py
 nova new my-site astro

@@ -45,8 +45,6 @@ check_path .gitignore
 if is_astro_project; then
   printf '[ok] Astro stack detected\n'
   check_path package.json
-  check_path tsconfig.json
-  check_path src/pages
   check_command node
   check_command pnpm
   if command -v node >/dev/null 2>&1; then
