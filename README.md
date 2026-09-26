@@ -1,24 +1,7 @@
 # `nova`
 
-This folder contains the draft `nova` command. It has not been installed into
+This folder contains the `nova` commands. It has not been installed into
 your command path.
-
-```text
-nova/
-├── bin/
-│   └── nova
-├── commands/
-│   ├── doctor.sh
-│   ├── help.sh
-│   ├── init.sh
-│   └── new.sh
-├── lib/
-│   └── gitignore.sh
-└── templates/
-    ├── base/
-    ├── python/
-    └── typescript/
-```
 
 Running `nova init`, `nova init ts`, or `nova init py` inside a directory creates:
 
@@ -29,11 +12,9 @@ Running `nova init`, `nova init ts`, or `nova init py` inside a directory create
 .sandbox/
 ```
 
-All variants add shared macOS, environment, editor, log, and workspace ignores.
-The `ts` variant also covers Node.js, TypeScript, React tooling, and Astro, while
-the `py` variant covers Python caches, environments, test tools, and build output.
-Existing files are preserved and only missing `.gitignore` lines are added, so
-the command is safe to run more than once.
+- TypeScript gets a minimal `package.json`; Python gets a minimal `pyproject.toml`. The normalized folder name becomes the package name.
+
+## Commands
 
 ```sh
 nova init          # shared project files
@@ -45,13 +26,7 @@ nova doctor
 nova --help
 ```
 
-`nova new` requires a project name and stack. It creates a new directory and
-initializes the Nova files inside it. It does not initialize a Git repository.
-
-`nova doctor` checks the Nova project files and verifies that the detected
-stack's runtime is installed. It does not require or inspect Git.
-
-## Try it without installing
+## Run w/o install
 
 ```sh
 ./bin/nova init ts
@@ -60,7 +35,7 @@ stack's runtime is installed. It does not require or inspect Git.
 ./bin/nova --help
 ```
 
-## Install it later
+## Install
 
 ```sh
 mkdir -p "$HOME/.local/bin" "$HOME/.local/share"
@@ -78,7 +53,7 @@ cp -R . "$HOME/.local/share/nova"
 ln -s "$HOME/.local/share/nova/bin/nova" "$HOME/.local/bin/nova"
 ```
 
-> This makes the `nova` command available from the conventional command directory.
+> This makes the `nova` command available from the command dir.
 
 ```sh
 grep -Fq '$HOME/.local/bin' "$HOME/.zshrc" || printf '\nexport PATH="$HOME/.local/bin:$PATH"\n' >> "$HOME/.zshrc"
