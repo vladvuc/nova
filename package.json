@@ -1,16 +1,15 @@
 {
-  "name": "nova-release-tools",
-  "private": true,
-  "description": "Development and release tooling for Nova",
-  "scripts": {
-    "hooks:install": "bash scripts/setup-hooks.sh",
-    "release": "semantic-release",
-    "release:dry": "semantic-release --dry-run"
-  },
-  "devDependencies": {
-    "@semantic-release/commit-analyzer": "^13.0.1",
-    "@semantic-release/github": "^12.0.10",
-    "@semantic-release/release-notes-generator": "^14.1.1",
-    "semantic-release": "^25.0.9"
-  }
+	"name": "nova-release-tools",
+	"private": true,
+	"description": "Development and release tooling for Nova",
+	"scripts": {
+		"release": "semantic-release",
+		"release:dry": "semantic-release --dry-run"
+	},
+	"devDependencies": {
+		"@semantic-release/commit-analyzer": "^13.0.1",
+		"@semantic-release/github": "^12.0.10",
+		"@semantic-release/release-notes-generator": "^14.1.1",
+		"semantic-release": "^25.0.9"
+	}
 }
