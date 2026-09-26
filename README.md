@@ -2,7 +2,7 @@
 
 ![Nova — a central node surrounded by branching nodes in Catppuccin pastel colors](assets/nova-banner.svg)
 
-This folder contains the `nova` commands. It has not been installed into your command path.
+Nova provides small commands for starting projects.
 
 Running `nova init`, `nova init ts`, `nova init py`, or `nova init astro` inside a directory creates:
 
@@ -11,13 +11,9 @@ Running `nova init`, `nova init ts`, `nova init py`, or `nova init astro` inside
 .plans/
 └── PROGRESS.md
 .sandbox/
+
++ minimal dependencie file
 ```
-
-- minimal dependencies file.
-
-Astro also creates an empty `.astro/` directory. It adds no source folders,
-pages, or configuration files; you choose your own project structure. Existing
-files are preserved, and `package.json` is created only when missing.
 
 ## Commands
 
@@ -30,6 +26,7 @@ nova new web-app ts
 nova new data-tool py
 nova new my-site astro
 nova doctor
+nova update
 nova --help
 ```
 
@@ -44,38 +41,31 @@ nova --help
 
 ## Install
 
-```sh
-mkdir -p "$HOME/.local/bin" "$HOME/.local/share"
-```
-
-> This creates conventional per-user directories for commands and their files.
+Run on macOS or Linux with Bash, Git, and curl installed:
 
 ```sh
-cp -R . "$HOME/.local/share/nova"
+curl -fsSL https://raw.githubusercontent.com/vladvuc/nova/main/install.sh | bash
 ```
 
-> This copies the command and its supporting files into a permanent location.
+If `~/.local/bin` is not on your PATH. For the default installation, add this to `~/.zshrc` (zsh) or `~/.bashrc` (bash), then open a new terminal:
 
 ```sh
-ln -s "$HOME/.local/share/nova/bin/nova" "$HOME/.local/bin/nova"
+export PATH="$HOME/.local/bin:$PATH"
 ```
 
-> This makes the `nova` command available from the command dir.
+Run `nova --help` to check the installation. You can also install directly from
+this repository with `bash install.sh`.
+
+Rerunning the installer preserves an existing Nova checkout and repairs a
+missing command link. It refuses to replace unrelated files or directories.
+Use `nova update` to update an existing installation.
+
+## Update
 
 ```sh
-grep -Fq '$HOME/.local/bin' "$HOME/.zshrc" || printf '\nexport PATH="$HOME/.local/bin:$PATH"\n' >> "$HOME/.zshrc"
+nova update
 ```
 
-> This ensures your shell can find the `nova` command without duplicating the PATH setting.
-
-```sh
-source "$HOME/.zshrc"
-```
-
-> This applies the updated command path to the current terminal session.
-
-```sh
-nova init ts
-```
-
-> This initializes the TypeScript project currently open in your terminal.
+Updates require a clean Git checkout on `main`. Local changes, untracked files,
+and diverging commits stop the update. Nothing is automatically stashed or
+reset. The command needs Git and internet access, with no GitHub token required.

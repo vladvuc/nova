@@ -22,6 +22,9 @@ case "${1:-}" in
   doctor)
     exec "$NOVA_ROOT/commands/doctor.sh" "${@:2}"
     ;;
+  update)
+    exec "$NOVA_ROOT/commands/update.sh" "${@:2}"
+    ;;
   -h|--help|help)
     exec "$NOVA_ROOT/commands/help.sh"
     ;;
