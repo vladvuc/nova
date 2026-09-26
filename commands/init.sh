@@ -7,6 +7,8 @@ readonly NOVA_ROOT="$(cd -P "$COMMANDS_DIR/.." && pwd)"
 
 # shellcheck source=../lib/gitignore.sh
 source "$NOVA_ROOT/lib/gitignore.sh"
+# shellcheck source=../lib/manifest.sh
+source "$NOVA_ROOT/lib/manifest.sh"
 
 project_type="${1:-base}"
 
@@ -32,9 +34,11 @@ add_gitignore_template "$NOVA_ROOT/templates/base/gitignore"
 case "$project_type" in
   ts)
     add_gitignore_template "$NOVA_ROOT/templates/typescript/gitignore"
+    create_manifest "$NOVA_ROOT/templates/typescript/package.json" package.json
     ;;
   py)
     add_gitignore_template "$NOVA_ROOT/templates/python/gitignore"
+    create_manifest "$NOVA_ROOT/templates/python/pyproject.toml" pyproject.toml
     ;;
 esac
 

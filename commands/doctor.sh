@@ -42,10 +42,12 @@ check_path .gitignore
 
 if [[ -f .gitignore ]] && grep -Fqx 'node_modules/' .gitignore; then
   printf '[ok] TypeScript stack detected\n'
+  check_path package.json
   check_command node
   check_command npm
 elif [[ -f .gitignore ]] && grep -Fqx '__pycache__/' .gitignore; then
   printf '[ok] Python stack detected\n'
+  check_path pyproject.toml
   check_command python3
 else
   printf '[ok] Base stack detected\n'
