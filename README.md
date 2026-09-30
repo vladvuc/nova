@@ -9,7 +9,8 @@ Running `nova init`, `nova init ts`, `nova init py`, or `nova init astro` inside
 ```text
 .gitignore
 .plans/
-└── PROGRESS.md
+├── PROGRESS.md
+└── THINKPAD.md
 .sandbox/
 
 + minimal dependencie file

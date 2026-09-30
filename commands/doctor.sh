@@ -39,6 +39,7 @@ check_command() {
 printf 'Nova doctor\n'
 check_path .plans
 check_path .plans/PROGRESS.md
+check_path .plans/THINKPAD.md
 check_path .sandbox
 check_path .gitignore
 

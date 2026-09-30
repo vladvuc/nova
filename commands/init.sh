@@ -27,7 +27,7 @@ case "$project_type" in
 esac
 
 mkdir -p .plans .sandbox
-touch .plans/PROGRESS.md .gitignore
+touch .plans/PROGRESS.md .plans/THINKPAD.md .gitignore
 
 add_gitignore_template "$NOVA_ROOT/templates/base/gitignore"
 
